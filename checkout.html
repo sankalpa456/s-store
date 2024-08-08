@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./checkout.css" />
+    <title>Payment Information</title>
+</head>
+<body>
+    <header>
+      <a href="index.html">
+        <img src="./icons/logo.png" alt="Website Logo" class="logo">
+      </a>
+        <nav>
+            <a href="./index.html" class="back-to-cart">Back to Cart</a>
+        </nav>
+        <div class="card">
+            <div class="card__header">
+                <img src="./icons/logo.png" class="logo" alt="Logo" />
+                <h1>Payment Information</h1>
+            </div>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input class="full-name" type="text" id="full-name" aria-label="Full Name" placeholder="Sankalpa Withanaarachchi" required />
+                </div>
+
+                <div class="icon-group-container">
+                    <label for="card-number">Card Number</label>
+                    <div class="icon-group">
+                        <input type="text" id="card-number" aria-label="Card Number" placeholder="1234 1234 1234 1234" required />
+                        <img id="card-icon" src="./icons/credit-card.png" height="20" width="20" alt="Card Icon" />
+                    </div>
+                </div>
+
+                <div class="row-group">
+                    <div class="form-group">
+                        <label for="expiration">Expiration Date</label>
+                        <input class="expiration-input" type="text" id="expiration" minlength="5" maxlength="5" placeholder="MM/YY" required />
+                    </div>
+                    <div class="icon-group-container">
+                        <label for="cvv">CVV</label>
+                        <div class="icon-group">
+                            <input class="cvv-input" type="text" maxlength="3" placeholder="···" id="cvv" required />
+                            <img id="info-icon" src="./icons/info.png" height="14" width="14" alt="Info Icon" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" aria-label="Address" placeholder="Kandy" required />
+                </div>
+                <button type="submit" class="submit-button">Confirm Payment</button>
+            </form>
+            <div class="verify-info">
+                <small>Verify the information is correct</small>
+            </div>
+        </div>
+    </header>
+    <script src="./checkout.js" defer></script>
+</body>
+</html>
