@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalPriceElement = document.querySelector('#total-price');
   const clearCartButton = document.getElementById('clear-cart-button');
   const checkoutButton = document.getElementById('checkout-button');
+  const addToFavoritesButton = document.getElementById('addto');
+  const applyFavoritesButton = document.getElementById('apply');
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   // Handle button clicks to show/hide sections
@@ -79,49 +81,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Add to Favorites functionality
+  addToFavoritesButton.addEventListener('click', () => {
+    localStorage.setItem('favoriteOrder', JSON.stringify(cart));
+    alert('Order has been added to favorites.');
+  });
+
+  // Apply Favorites functionality
+  applyFavoritesButton.addEventListener('click', () => {
+    const favoriteOrder = localStorage.getItem('favoriteOrder');
+    if (favoriteOrder) {
+      cart = JSON.parse(favoriteOrder);
+      updateCart();
+      alert('Favorite order has been applied.');
+    } else {
+      alert('No favorite order found.');
+    }
+  });
+
   // Load cart items and update the cart table on page load
   updateCart();
-});
-document.addEventListener('DOMContentLoaded', function() {
-  const cartItems = [
-      { name: 'Product 1', price: 500, quantity: 2 },
-      { name: 'Product 2', price: 300, quantity: 1 }
-  ];
-
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-  function renderCartItems() {
-      const cartItemsTable = document.getElementById('cart-items');
-      let rows = '';
-
-      cartItems.forEach(item => {
-          rows += `
-              <tr>
-                  <td>${item.name}</td>
-                  <td>${item.quantity}</td>
-                  <td>LKR ${item.price.toFixed(2)}</td>
-                  <td>LKR ${(item.price * item.quantity).toFixed(2)}</td>
-              </tr>
-          `;
-      });
-
-      cartItemsTable.innerHTML = `
-          <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total</th>
-          </tr>
-          ${rows}
-      `;
-  }
-
-  function updateCartTotal() {
-      const cartTotal = document.getElementById('cart-total');
-      const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-      cartTotal.textContent = `LKR ${totalAmount.toFixed(2)}`;
-  }
-
-  renderCartItems();
-  updateCartTotal();
 });
